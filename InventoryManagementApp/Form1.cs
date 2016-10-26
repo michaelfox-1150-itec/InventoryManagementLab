@@ -49,10 +49,19 @@ namespace InventoryManagementApp
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            foreach(string item in items)
+            foreach(ListViewItem item in lstItems.SelectedItems)
             {
-
+                item.Remove();
             }
+            
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            string editProduct = txtNewProduct.Text;
+            string editQuantity = txtQuantity.Text;
+
+            
         }
     }
 }
