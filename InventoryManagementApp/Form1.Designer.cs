@@ -67,7 +67,7 @@
             this.btnExit.TabIndex = 4;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.button3_Click);
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnEdit
             // 
@@ -131,8 +131,10 @@
             // 
             // frmInventory
             // 
+            this.AcceptButton = this.btnAdd;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(434, 332);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.lstItems);
