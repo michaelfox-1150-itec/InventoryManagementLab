@@ -30,7 +30,7 @@
         {
             this.btnAdd = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.txtNewProduct = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -59,15 +59,15 @@
             this.button2.Text = "Save";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnExit
             // 
-            this.button3.Location = new System.Drawing.Point(330, 289);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Exit";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnExit.Location = new System.Drawing.Point(330, 289);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.TabIndex = 4;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnEdit
             // 
@@ -141,7 +141,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNewProduct);
             this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnAdd);
             this.Name = "frmInventory";
@@ -154,7 +154,7 @@
         #endregion
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.TextBox txtNewProduct;
         private System.Windows.Forms.Label label1;
