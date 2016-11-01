@@ -1,4 +1,7 @@
-﻿using System;
+﻿// This program tracks inventory data and allows for updates.
+// Group #4
+// Mark Fox, Jarid Wagner, Michael Fox
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +15,7 @@ namespace InventoryManagementApp
 {
     public partial class frmInventory : Form
     {
+        // Creates initial list of products in an array.
         string[] items = { "T-Shirt", "Jeans", "Socks" };
         
 
@@ -19,7 +23,7 @@ namespace InventoryManagementApp
         public frmInventory()
         {
             InitializeComponent();
-
+            // Initializes listview properties and content.
             lstItems.View = View.Details;
             lstItems.Columns.Add("Product");
             lstItems.Columns.Add("Quantity");
@@ -28,30 +32,31 @@ namespace InventoryManagementApp
             lstItems.Items.Add(new ListViewItem(new string[] { "Shoes", "3" }));
             // Selects whole row instead of first column
             lstItems.FullRowSelect = true;
-            txtNewProduct.Focus();
-        }
-
-        private void lstItems_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            // Closes program.
             this.Close();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            // Adds exception handling
             try
             {
-                if (isThere(txtNewProduct, "Product", lblProduct) == true && isGoodData(txtQuantity, "Quantity", lblQuantity) == true)
-                {
+                // Checks if inputs are valid
+                if (isThere(txtNewProduct, "Product", lblProduct) == true && isThere(txtQuantity, "Quantity", lblQuantity) == true)
+                    if (isGoodData(txtQuantity, "Quantity", lblQuantity) == true)
+                    {
+                    // Adds listview entry with textbox values
                     lstItems.Items.Add(new ListViewItem(new string[] { txtNewProduct.Text, txtQuantity.Text }));
+                    // Clears textboxes
                     txtNewProduct.Clear();
                     txtQuantity.Clear();
-                }
+                    }
             }
+            // Catch for unknown exceptions
             catch (Exception)
             {
                 MessageBox.Show("An error has occurred.", "Error");
@@ -60,7 +65,8 @@ namespace InventoryManagementApp
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            foreach(ListViewItem item in lstItems.SelectedItems)
+            // Loops through selected listview items and removes them.
+            foreach (ListViewItem item in lstItems.SelectedItems)
             {
                 item.Remove();
             }           
@@ -68,23 +74,30 @@ namespace InventoryManagementApp
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            // Adds exception handling
             try
             {
+                // Checks if inputs are valid
                 if (isThere(txtNewProduct, "Product", lblProduct) == true && isThere(txtQuantity, "Quantity", lblQuantity) == true)
                     if (isGoodData(txtQuantity, "Quantity", lblQuantity) == true)
                     {
+                    // Converts textbox values to strings
                     string editProduct = txtNewProduct.Text;
                     string editQuantity = txtQuantity.Text;
+                    // Sets variable for selected listview item
                     ListViewItem item = lstItems.SelectedItems[0];
+                    // Updates subitems of selected item
                     item.SubItems[0].Text = editProduct;
                     item.SubItems[1].Text = editQuantity;
                     }
             }
+            // Catch for unselected item
             catch (ArgumentOutOfRangeException)
             {
                 MessageBox.Show("Please select an item to edit.", "No item selected");
             }
 
+            // Catch for unknown exceptions
             catch (Exception)
             {
                 MessageBox.Show("An error has occurred.", "Error");

@@ -138,9 +138,8 @@
             this.lblProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProduct.Location = new System.Drawing.Point(185, 20);
             this.lblProduct.Name = "lblProduct";
-            this.lblProduct.Size = new System.Drawing.Size(52, 18);
+            this.lblProduct.Size = new System.Drawing.Size(0, 18);
             this.lblProduct.TabIndex = 11;
-            this.lblProduct.Text = "label3";
             // 
             // lblQuantity
             // 
@@ -148,9 +147,8 @@
             this.lblQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblQuantity.Location = new System.Drawing.Point(143, 41);
             this.lblQuantity.Name = "lblQuantity";
-            this.lblQuantity.Size = new System.Drawing.Size(52, 18);
+            this.lblQuantity.Size = new System.Drawing.Size(0, 18);
             this.lblQuantity.TabIndex = 12;
-            this.lblQuantity.Text = "label4";
             // 
             // frmInventory
             // 
