@@ -12,7 +12,7 @@ namespace InventoryManagementApp
 {
     public partial class frmInventory : Form
     {
-        string[] items = { "T-Shirt", "Jeans", "Socks" };
+        
         
 
 
@@ -26,6 +26,7 @@ namespace InventoryManagementApp
             lstItems.Items.Add(new ListViewItem(new string[] { "Shirt", "12"}));
             lstItems.Items.Add(new ListViewItem(new string[] { "Pants", "15" }));
             lstItems.Items.Add(new ListViewItem(new string[] { "Shoes", "3" }));
+            
         }
 
         private void lstItems_SelectedIndexChanged(object sender, EventArgs e)
@@ -40,11 +41,27 @@ namespace InventoryManagementApp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            string quantityValue = txtQuantity.Text;
+            double validQuantity;
+            bool isValid = double.TryParse(quantityValue, out validQuantity);
+            if (txtNewProduct.Text == "")
+            {
+                MessageBox.Show("Please enter a valid product name.", 
+                            "No Product Declared");
+            txtNewProduct.Focus();
+            }
+
+            else if (isValid == false)
+            {
+                MessageBox.Show("Please enter a valid numeric quantity.",
+                                "Invalid quantity.");
+            }
+            
+            else{
             lstItems.Items.Add(new ListViewItem(new string[] { txtNewProduct.Text, txtQuantity.Text }));
             txtNewProduct.Clear();
             txtQuantity.Clear();
-            
-          
+            }
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -63,5 +80,18 @@ namespace InventoryManagementApp
 
             
         }
+
+        private void frmInventory_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNewProduct_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        
+        }
     }
-}
+

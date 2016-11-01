@@ -85,6 +85,7 @@
             this.txtNewProduct.Name = "txtNewProduct";
             this.txtNewProduct.Size = new System.Drawing.Size(117, 20);
             this.txtNewProduct.TabIndex = 6;
+            this.txtNewProduct.TextChanged += new System.EventHandler(this.txtNewProduct_TextChanged);
             // 
             // label1
             // 
@@ -146,6 +147,7 @@
             this.Controls.Add(this.btnAdd);
             this.Name = "frmInventory";
             this.Text = "Inventory Management";
+            this.Load += new System.EventHandler(this.frmInventory_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
