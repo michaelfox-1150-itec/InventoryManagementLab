@@ -45,7 +45,7 @@ namespace InventoryManagementApp
         {
             try
             {
-                if (isThere(txtNewProduct, "Product") == true && isGoodData(txtQuantity, "Quantity") == true)
+                if (isThere(txtNewProduct, "Product", lblProduct) == true && isGoodData(txtQuantity, "Quantity", lblQuantity) == true)
                 {
                     lstItems.Items.Add(new ListViewItem(new string[] { txtNewProduct.Text, txtQuantity.Text }));
                     txtNewProduct.Clear();
@@ -56,9 +56,6 @@ namespace InventoryManagementApp
             {
                 MessageBox.Show("An error has occurred.", "Error");
             }
-
-            
-          
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -66,22 +63,22 @@ namespace InventoryManagementApp
             foreach(ListViewItem item in lstItems.SelectedItems)
             {
                 item.Remove();
-            }
-            
+            }           
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             try
             {
-                if (isThere(txtNewProduct, "Product") == true && isGoodData(txtQuantity, "Quantity") == true)
-                {
+                if (isThere(txtNewProduct, "Product", lblProduct) == true && isThere(txtQuantity, "Quantity", lblQuantity) == true)
+                    if (isGoodData(txtQuantity, "Quantity", lblQuantity) == true)
+                    {
                     string editProduct = txtNewProduct.Text;
                     string editQuantity = txtQuantity.Text;
                     ListViewItem item = lstItems.SelectedItems[0];
                     item.SubItems[0].Text = editProduct;
                     item.SubItems[1].Text = editQuantity;
-                }
+                    }
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -94,15 +91,17 @@ namespace InventoryManagementApp
             }
         }
 
-        private bool isThere (TextBox vtextbox, string vname)
+        private bool isThere (TextBox vtextbox, string vname, Label vlabel)
         {
             // Checks if textbox is empty or not
             if (vtextbox.Text == "")
             {
                 MessageBox.Show(vname + " is empty. Try again.", "Missing Entry");
                 vtextbox.Focus();
+                wrong(vlabel);
                 return false;
             }
+            correct(vlabel);
             return true;
         }
 
@@ -132,17 +131,36 @@ namespace InventoryManagementApp
             return true;
         }
 
-        private bool isGoodData (TextBox vtextbox, string vname)
+        private bool isGoodData(TextBox vtextbox, string vname, Label vlabel)
         {
             // Checks the validity of the input.
-            if (!isThere(vtextbox,vname))
-                return false;
             if (!isNumber(vtextbox, vname))
+            {
+                wrong(vlabel);
                 return false;
+            }
             if (!isGoodRange(vtextbox, vname))
+            {
+                wrong(vlabel);
                 return false;
+            }
+            correct(vlabel);
             return true;
         }
+        private void correct(Label vlabel)
+        {
+            // Adds checkmark to label and formats.
+            vlabel.Text = "\u2714";
+            vlabel.ForeColor = System.Drawing.Color.Green;
+        }
+
+        private void wrong(Label vlabel)
+        {
+            // Adds X to label and formats.
+            vlabel.Text = "\uAB57";
+            vlabel.ForeColor = System.Drawing.Color.Red;
+        }
+
     }
 }
 

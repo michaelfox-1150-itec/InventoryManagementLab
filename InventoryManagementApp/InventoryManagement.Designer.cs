@@ -38,6 +38,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lstItems = new System.Windows.Forms.ListView();
             this.btnRemove = new System.Windows.Forms.Button();
+            this.lblProduct = new System.Windows.Forms.Label();
+            this.lblQuantity = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnAdd
@@ -130,6 +132,26 @@
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
+            // lblProduct
+            // 
+            this.lblProduct.AutoSize = true;
+            this.lblProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProduct.Location = new System.Drawing.Point(185, 20);
+            this.lblProduct.Name = "lblProduct";
+            this.lblProduct.Size = new System.Drawing.Size(52, 18);
+            this.lblProduct.TabIndex = 11;
+            this.lblProduct.Text = "label3";
+            // 
+            // lblQuantity
+            // 
+            this.lblQuantity.AutoSize = true;
+            this.lblQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuantity.Location = new System.Drawing.Point(143, 41);
+            this.lblQuantity.Name = "lblQuantity";
+            this.lblQuantity.Size = new System.Drawing.Size(52, 18);
+            this.lblQuantity.TabIndex = 12;
+            this.lblQuantity.Text = "label4";
+            // 
             // frmInventory
             // 
             this.AcceptButton = this.btnAdd;
@@ -137,6 +159,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(434, 332);
+            this.Controls.Add(this.lblQuantity);
+            this.Controls.Add(this.lblProduct);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.lstItems);
             this.Controls.Add(this.label2);
@@ -165,6 +189,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListView lstItems;
         private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Label lblProduct;
+        private System.Windows.Forms.Label lblQuantity;
     }
 }
 
