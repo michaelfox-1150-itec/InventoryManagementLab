@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnAdd = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.txtNewProduct = new System.Windows.Forms.TextBox();
@@ -46,26 +46,27 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "Add...";
+            this.btnAdd.Text = "&Add...";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // button2
+            // btnSave
             // 
-            this.button2.Location = new System.Drawing.Point(232, 289);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Save";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSave.Location = new System.Drawing.Point(232, 289);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 6;
+            this.btnSave.Text = "&Save";
+            this.btnSave.UseVisualStyleBackColor = true;
             // 
             // btnExit
             // 
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExit.Location = new System.Drawing.Point(330, 289);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
-            this.btnExit.TabIndex = 4;
-            this.btnExit.Text = "Exit";
+            this.btnExit.TabIndex = 7;
+            this.btnExit.Text = "E&xit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -74,8 +75,8 @@
             this.btnEdit.Location = new System.Drawing.Point(62, 124);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
-            this.btnEdit.TabIndex = 5;
-            this.btnEdit.Text = "Edit...";
+            this.btnEdit.TabIndex = 4;
+            this.btnEdit.Text = "&Edit...";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -84,7 +85,7 @@
             this.txtNewProduct.Location = new System.Drawing.Point(62, 18);
             this.txtNewProduct.Name = "txtNewProduct";
             this.txtNewProduct.Size = new System.Drawing.Size(117, 20);
-            this.txtNewProduct.TabIndex = 6;
+            this.txtNewProduct.TabIndex = 0;
             // 
             // label1
             // 
@@ -100,7 +101,7 @@
             this.txtQuantity.Location = new System.Drawing.Point(62, 40);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(75, 20);
-            this.txtQuantity.TabIndex = 9;
+            this.txtQuantity.TabIndex = 1;
             // 
             // label2
             // 
@@ -116,7 +117,7 @@
             this.lstItems.Location = new System.Drawing.Point(232, 21);
             this.lstItems.Name = "lstItems";
             this.lstItems.Size = new System.Drawing.Size(173, 262);
-            this.lstItems.TabIndex = 11;
+            this.lstItems.TabIndex = 5;
             this.lstItems.UseCompatibleStateImageBehavior = false;
             // 
             // btnRemove
@@ -124,8 +125,8 @@
             this.btnRemove.Location = new System.Drawing.Point(62, 95);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 23);
-            this.btnRemove.TabIndex = 12;
-            this.btnRemove.Text = "Remove...";
+            this.btnRemove.TabIndex = 3;
+            this.btnRemove.Text = "&Remove...";
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
@@ -144,7 +145,7 @@
             this.Controls.Add(this.txtNewProduct);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnAdd);
             this.Name = "frmInventory";
             this.Text = "Inventory Management";
@@ -155,7 +156,7 @@
 
         #endregion
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.TextBox txtNewProduct;

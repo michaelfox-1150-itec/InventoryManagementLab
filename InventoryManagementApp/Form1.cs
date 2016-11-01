@@ -28,6 +28,7 @@ namespace InventoryManagementApp
             lstItems.Items.Add(new ListViewItem(new string[] { "Shoes", "3" }));
             // Selects whole row instead of first column
             lstItems.FullRowSelect = true;
+            txtNewProduct.Focus();
         }
 
         private void lstItems_SelectedIndexChanged(object sender, EventArgs e)
@@ -42,9 +43,20 @@ namespace InventoryManagementApp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            lstItems.Items.Add(new ListViewItem(new string[] { txtNewProduct.Text, txtQuantity.Text }));
-            txtNewProduct.Clear();
-            txtQuantity.Clear();
+            try
+            {
+                if (isThere(txtNewProduct, "Product") == true && isGoodData(txtQuantity, "Quantity") == true)
+                {
+                    lstItems.Items.Add(new ListViewItem(new string[] { txtNewProduct.Text, txtQuantity.Text }));
+                    txtNewProduct.Clear();
+                    txtQuantity.Clear();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An error has occurred.", "Error");
+            }
+
             
           
         }
@@ -62,7 +74,7 @@ namespace InventoryManagementApp
         {
             try
             {
-                if (isGoodData(txtNewProduct, "Product") == true && isGoodData(txtQuantity, "Quantity") == true)
+                if (isThere(txtNewProduct, "Product") == true && isGoodData(txtQuantity, "Quantity") == true)
                 {
                     string editProduct = txtNewProduct.Text;
                     string editQuantity = txtQuantity.Text;
@@ -71,6 +83,11 @@ namespace InventoryManagementApp
                     item.SubItems[1].Text = editQuantity;
                 }
             }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Please select an item to edit.", "No item selected");
+            }
+
             catch (Exception)
             {
                 MessageBox.Show("An error has occurred.", "Error");
@@ -102,7 +119,7 @@ namespace InventoryManagementApp
                 return false;
             }
         }
-        private bool isGoodRange(TextBox vtextbox, string vname, int vmin = 0, int vmax = 100)
+        private bool isGoodRange(TextBox vtextbox, string vname, int vmin = 0, int vmax = 500)
         {
             // Checks if textbox value is within the specified range.
             int number = Convert.ToInt32(vtextbox.Text);
