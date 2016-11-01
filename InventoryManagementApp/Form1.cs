@@ -26,6 +26,8 @@ namespace InventoryManagementApp
             lstItems.Items.Add(new ListViewItem(new string[] { "Shirt", "12"}));
             lstItems.Items.Add(new ListViewItem(new string[] { "Pants", "15" }));
             lstItems.Items.Add(new ListViewItem(new string[] { "Shoes", "3" }));
+            // Selects whole row instead of first column
+            lstItems.FullRowSelect = true;
         }
 
         private void lstItems_SelectedIndexChanged(object sender, EventArgs e)
@@ -58,13 +60,72 @@ namespace InventoryManagementApp
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            string editProduct = txtNewProduct.Text;
-            string editQuantity = txtQuantity.Text;
-            ListViewItem item = lstItems.SelectedItems[0];
-            item.SubItems[0].Text = editProduct;
-            item.SubItems[1].Text = editQuantity;
+            try
+            {
+                if (isGoodData(txtNewProduct, "Product") == true && isGoodData(txtQuantity, "Quantity") == true)
+                {
+                    string editProduct = txtNewProduct.Text;
+                    string editQuantity = txtQuantity.Text;
+                    ListViewItem item = lstItems.SelectedItems[0];
+                    item.SubItems[0].Text = editProduct;
+                    item.SubItems[1].Text = editQuantity;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An error has occurred.", "Error");
+            }
+        }
 
+        private bool isThere (TextBox vtextbox, string vname)
+        {
+            // Checks if textbox is empty or not
+            if (vtextbox.Text == "")
+            {
+                MessageBox.Show(vname + " is empty. Try again.", "Missing Entry");
+                vtextbox.Focus();
+                return false;
+            }
+            return true;
+        }
 
+        private bool isNumber(TextBox vtextbox, string vname)
+        {
+            // Checks if textbox value can be converted correctly
+            int number = 0;
+            if (Int32.TryParse(vtextbox.Text, out number))
+                return true;
+            else
+            {
+                MessageBox.Show(vname + " isn't an integer number. Try again.", "Incorrect Entry");
+                vtextbox.Focus();
+                return false;
+            }
+        }
+        private bool isGoodRange(TextBox vtextbox, string vname, int vmin = 0, int vmax = 100)
+        {
+            // Checks if textbox value is within the specified range.
+            int number = Convert.ToInt32(vtextbox.Text);
+            if (number < vmin || number > vmax)
+            {
+                MessageBox.Show(vname + " needs to be a number " + vmin.ToString() + " - " + vmax.ToString("n0"), "Out of Range");
+                vtextbox.Focus();
+                return false;
+            }
+            return true;
+        }
+
+        private bool isGoodData (TextBox vtextbox, string vname)
+        {
+            // Checks the validity of the input.
+            if (!isThere(vtextbox,vname))
+                return false;
+            if (!isNumber(vtextbox, vname))
+                return false;
+            if (!isGoodRange(vtextbox, vname))
+                return false;
+            return true;
         }
     }
 }
+
