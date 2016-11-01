@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,16 +23,17 @@ namespace InventoryManagementApp
             // Create form, generates a listview box with two columns that represent the name of a product
             // and the quantity value for each product added.
             lstItems.View = View.Details;
-            lstItems.Columns.Add("Product");
             lstItems.Columns.Add("Quantity");
-            lstItems.Items.Add(new ListViewItem(new string[] { "Shirt", "12"}));
-            lstItems.Items.Add(new ListViewItem(new string[] { "Pants", "15" }));
-            lstItems.Items.Add(new ListViewItem(new string[] { "Shoes", "3" }));
+            lstItems.Columns.Add("Product");
+            //lstItems.Items.Add(new ListViewItem(new string[] { "12", "Shirt"}));
+            // lstItems.Items.Add(new ListViewItem(new string[] { "15", "Pants" }));
+            // lstItems.Items.Add(new ListViewItem(new string[] { "3", "Shoes" }));
             
         }
 
-        private void lstItems_SelectedIndexChanged(object sender, EventArgs e)
+        private void lstItems_AfterLabelEdit(object sender, System.Windows.Forms.LabelEditEventArgs e)
         {
+           
             
         }
 
@@ -65,7 +67,7 @@ namespace InventoryManagementApp
              // Valid entries in both text boxes allows add function to continue.
              // Adds product/quantity pairing into listview box.
             else{
-            lstItems.Items.Add(new ListViewItem(new string[] { txtNewProduct.Text, txtQuantity.Text }));
+            lstItems.Items.Add(new ListViewItem(new string[] { txtQuantity.Text, txtNewProduct.Text }));
             txtNewProduct.Clear();
             txtQuantity.Clear();
             }
@@ -82,8 +84,13 @@ namespace InventoryManagementApp
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            string editProduct = txtNewProduct.Text;
-            string editQuantity = txtQuantity.Text;
+           //Edit button function that edits the values of the listview item selected and replaces them with the textbox values. 
+           try
+            {
+                lstItems.SelectedItems[0].SubItems[1].Text = txtNewProduct.Text;
+                lstItems.SelectedItems[0].SubItems[0].Text = txtQuantity.Text;
+            }
+            catch { }
 
             
         }
@@ -98,7 +105,25 @@ namespace InventoryManagementApp
             
         }
 
-        
+        private void btnSave_Click(object sender, EventArgs e)
+        {  //Save listview data to embedded .txt file.
+            MessageBox.Show("Are you sure you want to save these changes?", "Save",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            
+            if (MessageBox.Show("Are you sure you want to save these changes?", "Save",MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                using (var tw = new StreamWriter(@"C:\\Users\Mike\Source\repos\inventorymanagementlab\inventorymanagementapp\resources\textfile1.txt"))
+                {
+                    foreach (ListViewItem item in lstItems.Items)
+                    {
+                        tw.WriteLine(item.Text);
+                    }
+                }
+
+            }
+            
         }
+      }
     }
+    
 

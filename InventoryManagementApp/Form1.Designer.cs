@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnAdd = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.txtNewProduct = new System.Windows.Forms.TextBox();
@@ -50,14 +50,15 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // button2
+            // btnSave
             // 
-            this.button2.Location = new System.Drawing.Point(232, 289);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Save";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSave.Location = new System.Drawing.Point(232, 289);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 3;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // button3
             // 
@@ -114,7 +115,9 @@
             // 
             // lstItems
             // 
+            this.lstItems.LabelEdit = true;
             this.lstItems.Location = new System.Drawing.Point(232, 21);
+            this.lstItems.MultiSelect = false;
             this.lstItems.Name = "lstItems";
             this.lstItems.Size = new System.Drawing.Size(173, 262);
             this.lstItems.TabIndex = 11;
@@ -143,7 +146,7 @@
             this.Controls.Add(this.txtNewProduct);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnAdd);
             this.Name = "frmInventory";
             this.Text = "Inventory Management";
@@ -155,7 +158,7 @@
 
         #endregion
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.TextBox txtNewProduct;
