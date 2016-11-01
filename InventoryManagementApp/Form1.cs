@@ -60,8 +60,11 @@ namespace InventoryManagementApp
         {
             string editProduct = txtNewProduct.Text;
             string editQuantity = txtQuantity.Text;
+            ListViewItem item = lstItems.SelectedItems[0];
+            item.SubItems[0].Text = editProduct;
+            item.SubItems[1].Text = editQuantity;
 
-            
+
         }
     }
 }
